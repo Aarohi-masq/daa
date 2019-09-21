@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<time.h>
+int main()
+{
+    int n,count=0;
+    clock_t t;
+    t=clock();
+    printf ("Enter the size of string:\n");
+    scanf("%d", &n);
+    char s[n];
+    printf("enter the string:\n");
+    scanf("\n");
+    scanf("%[^\n]%*c",s);
+    int m;
+    printf("\nEnter the size of substring:\n");
+    scanf("%d", &m);
+    char c[m];
+    printf("enter the string\n");
+    scanf("\n");
+    scanf("%[^\n]%*c",c);
+    for(int i=0;i<n; i++)
+    {
+        for(int j=0;j<m;j++)
+        {
+            if(s[i]==c[j])
+            {
+                printf("\nPosition of substring:%d",(i+1));
+                
+                while(s[i]==c[j])
+                {
+                   
+                   ++count;
+                   
+                   i++;
+                   j++;
+                   
+                }
+                printf("\nposition upto which the substring matches:%d",(i));
+                goto L1;
+            }
+        }
+        
+    }
+    L1:t=clock()-t;
+    double time_taken=((double)t)/CLOCKS_PER_SEC;
+    printf("\n%f seconds to search the sub string",time_taken);
+    return 0;
+}
